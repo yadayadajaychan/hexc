@@ -4,7 +4,7 @@
 int main(void)
 {
 	init_screen();
-	
+
 	while (!os_GetCSC());
 
 	///clear_disp();

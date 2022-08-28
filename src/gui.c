@@ -30,7 +30,7 @@ int init_screen(void)
 	//int yp = gfx_GetTextX();
 	//gfx_SetTextXY(16, 50);
 	//gfx_PrintUInt(yp, 8);
-	
+
 	return 0;
 }
 
@@ -79,7 +79,7 @@ int display_int(int num, char mode)
 	gfx_SetTextXY(start_pixel, 18);
 	clear_disp();
 	gfx_PrintString(str);
-	
+
 	return 0;
 }
 

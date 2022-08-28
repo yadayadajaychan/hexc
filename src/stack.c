@@ -21,7 +21,7 @@ uint64_t pop(void)
 {
 	static uint64_t reg_x;
 	reg_x = stack[0];
-	
+
 	/* drop the stack */
 	stack[0] = stack[1];
 	stack[1] = stack[2];

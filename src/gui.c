@@ -19,18 +19,6 @@ int init_screen(void)
 
 	gfx_SetTextXY(16, 18);
 
-	gfx_PrintUInt(123, 4);
-	gfx_PrintString("  ");
-	gfx_PrintUInt(1, 4);
-	gfx_PrintString("  ");
-	gfx_PrintString("89AB");
-	gfx_PrintString("  ");
-	gfx_PrintString("CDEF");
-
-	//int yp = gfx_GetTextX();
-	//gfx_SetTextXY(16, 50);
-	//gfx_PrintUInt(yp, 8);
-
 	return 0;
 }
 
@@ -75,7 +63,7 @@ int display_int(int num, char mode)
 	while (str[i] != 0)
 		i++;
 
-	int start_pixel = (DISPLAY_X + DISPLAY_LENGTH) - DIGIT_WIDTH_PX * i ;
+	int start_pixel = (DISPLAY_X + DISPLAY_LENGTH) - DIGIT_WIDTH_PX * i;
 	gfx_SetTextXY(start_pixel, 18);
 	clear_disp();
 	gfx_PrintString(str);

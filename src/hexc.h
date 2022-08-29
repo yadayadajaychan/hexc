@@ -25,6 +25,7 @@ int clear_base(void);
 int display_int(int num, char mode);
 int end_screen(void);
 
+void lift_stack(void);
 void push(uint64_t num);
 uint64_t pop(void);
 uint64_t get_reg_x(void);

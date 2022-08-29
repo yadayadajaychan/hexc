@@ -19,17 +19,22 @@
 #define WHITE 255
 #define BLACK 0
 
+/* gui.c */
 int init_screen(void);
 int clear_disp(void);
 int clear_base(void);
 int display_int(int num, char mode);
 int end_screen(void);
 
+/* stack.c */
 void lift_stack(void);
 void push(uint64_t num);
 uint64_t pop(void);
 uint64_t get_reg_x(void);
 void set_last_x(void);
 void push_last_x(void);
+
+/* input.c */
+uint8_t get_single_key_pressed(void);
 
 #endif /* HEXC_H */

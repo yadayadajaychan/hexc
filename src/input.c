@@ -1,7 +1,9 @@
 #include <keypadc.h>
 #include "hexc.h"
 
-/* function by jacobly */
+/* function written by jacobly
+ * https://ce-programming.github.io/toolchain/libraries/keypadc.html
+ */
 uint8_t get_single_key_pressed(void)
 {
 	static uint8_t last_key;

@@ -7,7 +7,7 @@ int main(void)
 
 	uint8_t key;
 	uint64_t last_reg_x = 0;
-	extern int should_stack_lift;
+	extern int is_stack_lift_enabled;
 
 	while (true) {
 
@@ -48,18 +48,18 @@ int main(void)
 			push(9);
 			break;
 		case sk_Add:
-			should_stack_lift = true;
+			is_stack_lift_enabled = true;
 			push(pop() + pop());
-			should_stack_lift = true;
+			is_stack_lift_enabled = true;
 			break;
 		case sk_Mul:
-			should_stack_lift = true;
+			is_stack_lift_enabled = true;
 			push(pop() * pop());
-			should_stack_lift = true;
+			is_stack_lift_enabled = true;
 			break;
 		case sk_Enter:
 			lift_stack();
-			should_stack_lift = false;
+			is_stack_lift_enabled = false;
 			break;
 		default:
 			break;

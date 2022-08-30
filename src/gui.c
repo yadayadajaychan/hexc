@@ -17,7 +17,7 @@ int init_screen(void)
 	/* set digit scale */
 	gfx_SetTextScale(DIGIT_WIDTH_SCALE, DIGIT_HEIGHT_SCALE);
 
-	gfx_SetTextXY(16, 18);
+	display_int(0, 'h');
 
 	return 0;
 }

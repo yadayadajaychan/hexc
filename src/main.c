@@ -6,7 +6,6 @@ int main(void)
 	init_screen();
 
 	uint8_t key;
-	uint64_t last_reg_x = 0; //last value of register x, not lastx register
 	uint64_t op2; //temporary storage of second operator
 	extern int is_stack_lift_enabled;
 
@@ -79,14 +78,14 @@ int main(void)
 			is_stack_lift_enabled = false;
 			break;
 		default:
-			break;
+			/* dont update display if no keys are pressed */
+			goto skip_display_update;
 		}
 
 		/* display the contents of register x */
-		if (last_reg_x != get_reg_x()) {
-			last_reg_x = get_reg_x();
-			display_int(last_reg_x, 'd');
-		}
+		display_int(get_reg_x(), 'd');
+skip_display_update:
+		;
 	}
 
 	end_screen();

@@ -6,7 +6,8 @@ int main(void)
 	init_screen();
 
 	uint8_t key;
-	uint64_t last_reg_x = 0;
+	uint64_t last_reg_x = 0; //last value of register x, not lastx register
+	uint64_t op2; //temporary storage of second operator
 	extern int is_stack_lift_enabled;
 
 	while (true) {
@@ -52,9 +53,25 @@ int main(void)
 			push(pop() + pop());
 			is_stack_lift_enabled = true;
 			break;
+		case sk_Sub:
+			is_stack_lift_enabled = true;
+			op2 = pop();
+			push(pop() - op2);
+			is_stack_lift_enabled = true;
+			break;
 		case sk_Mul:
 			is_stack_lift_enabled = true;
 			push(pop() * pop());
+			is_stack_lift_enabled = true;
+			break;
+		case sk_Div:
+			op2 = pop();
+			if (op2 == 0) {
+				;
+			} else {
+				is_stack_lift_enabled = true;
+				push(pop() / op2);
+			}
 			is_stack_lift_enabled = true;
 			break;
 		case sk_Enter:

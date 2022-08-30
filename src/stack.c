@@ -1,8 +1,9 @@
 #include <stdint.h>
+#include <stdbool.h>
 #include "hexc.h"
 
 /* whether or not the stack should be lifted when values are pushed */
-int is_stack_lift = FALSE;
+int should_stack_lift = false;
 
 static uint64_t stack[4] = {0};
 static uint64_t last_x = 0;
@@ -16,10 +17,12 @@ void lift_stack(void)
 
 void push(uint64_t num)
 {
-	if (is_stack_lift) {
+	if (should_stack_lift) {
 		stack[3] = stack[2];
 		stack[2] = stack[1];
 		stack[1] = stack[0];
+
+		should_stack_lift = false;
 	}
 	stack[0] = num;
 }
@@ -50,6 +53,6 @@ void set_last_x(void)
 
 void push_last_x(void)
 {
-	is_stack_lift = TRUE;
+	should_stack_lift = true;
 	push(last_x);
 }

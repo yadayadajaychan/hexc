@@ -1,9 +1,6 @@
 #ifndef HEXC_H
 #define HEXC_H
 
-#define TRUE 1
-#define FALSE 0
-
 #define DISPLAY_X 10
 #define DISPLAY_Y 10
 #define DISPLAY_LENGTH 300

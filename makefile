@@ -3,7 +3,6 @@
 # ----------------------------
 
 NAME = hexc
-ICON = icon.png
 DESCRIPTION = "Calculator for Computer Scientists"
 COMPRESSED = NO
 ARCHIVED = NO

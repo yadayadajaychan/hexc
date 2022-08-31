@@ -1,4 +1,6 @@
 #include <ti/getcsc.h>
+#include <stdint.h>
+#include <stdbool.h>
 #include "hexc.h"
 
 int main(void)

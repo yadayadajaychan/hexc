@@ -5,9 +5,9 @@ int main(void)
 {
 	init_screen();
 
-	uint8_t key;
+	uint8_t key, base = 10;
 	uint64_t op2; //temporary storage of second operator
-	extern int is_stack_lift_enabled;
+	extern uint8_t is_stack_lift_enabled, overwrite;
 
 	while (true) {
 
@@ -18,34 +18,34 @@ int main(void)
 
 		switch (key) {
 		case sk_0:
-			push(0);
+			push_digit(0, base);
 			break;
 		case sk_1:
-			push(1);
+			push_digit(1, base);
 			break;
 		case sk_2:
-			push(2);
+			push_digit(2, base);
 			break;
 		case sk_3:
-			push(3);
+			push_digit(3, base);
 			break;
 		case sk_4:
-			push(4);
+			push_digit(4, base);
 			break;
 		case sk_5:
-			push(5);
+			push_digit(5, base);
 			break;
 		case sk_6:
-			push(6);
+			push_digit(6, base);
 			break;
 		case sk_7:
-			push(7);
+			push_digit(7, base);
 			break;
 		case sk_8:
-			push(8);
+			push_digit(8, base);
 			break;
 		case sk_9:
-			push(9);
+			push_digit(9, base);
 			break;
 		case sk_Add:
 			is_stack_lift_enabled = true;
@@ -73,9 +73,14 @@ int main(void)
 			}
 			is_stack_lift_enabled = true;
 			break;
+		case sk_Clear:
+			is_stack_lift_enabled = false;
+			push(0);
+			break;
 		case sk_Enter:
 			lift_stack();
 			is_stack_lift_enabled = false;
+			overwrite = true;
 			break;
 		default:
 			/* dont update display if no keys are pressed */

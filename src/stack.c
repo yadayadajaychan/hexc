@@ -3,7 +3,9 @@
 #include "hexc.h"
 
 /* whether or not the stack should be lifted when values are pushed */
-int is_stack_lift_enabled = false;
+uint8_t is_stack_lift_enabled = false;
+/* whether or not the current value on the stack should be overwritten */
+uint8_t overwrite = true;
 
 static uint64_t stack[4] = {0};
 static uint64_t last_x = 0;
@@ -25,6 +27,20 @@ void push(uint64_t num)
 		is_stack_lift_enabled = false;
 	}
 	stack[0] = num;
+}
+
+void push_digit(uint8_t num, uint8_t base)
+{
+	extern uint8_t overwrite;
+
+	if (is_stack_lift_enabled) {
+		push(num);
+	} else if (overwrite) {
+		push(num);
+		overwrite = false;
+	} else {
+		push(get_reg_x() * base + num);
+	}
 }
 
 uint64_t pop(void)

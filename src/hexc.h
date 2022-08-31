@@ -26,12 +26,10 @@ int end_screen(void);
 /* stack.c */
 void lift_stack(void);
 void push(uint64_t num);
+void push_digit(uint8_t num, uint8_t base);
 uint64_t pop(void);
 uint64_t get_reg_x(void);
 void set_last_x(void);
 void push_last_x(void);
-
-/* input.c */
-uint8_t get_single_key_pressed(void);
 
 #endif /* HEXC_H */

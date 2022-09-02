@@ -2,6 +2,25 @@
 #include <stdio.h>
 #include "hexc.h"
 
+static const uint16_t digit_x_position[16] = {
+	286,
+	268,
+	250,
+	232,
+	214,
+	196,
+	178,
+	160,
+	142,
+	124,
+	106,
+	88,
+	70,
+	52,
+	34,
+	16
+};
+
 int init_screen(void)
 {
 	gfx_Begin();
@@ -57,16 +76,19 @@ int display_int(int num, char mode)
 		sprintf(str, "%x", num);
 		break;
 	default:
-		break;
+		return 1;
 	}
 
 	while (str[i] != 0)
 		i++;
+	i--;
 
-	int start_pixel = (DISPLAY_X + DISPLAY_LENGTH) - DIGIT_WIDTH_PX * i;
-	gfx_SetTextXY(start_pixel, 18);
+	/* j is the digit index and i is the array index */
 	clear_disp();
-	gfx_PrintString(str);
+	for (int j = 0; j <= i; j++) {
+		gfx_SetTextXY(digit_x_position[j], 18);
+		gfx_PrintChar(str[i - j]);
+	}
 
 	return 0;
 }
